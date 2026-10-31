@@ -27,13 +27,36 @@ pip install -r requirements.txt
 Copy-Item .env.example .env
 ```
 
-Open `.env` and set `GEMINI_API_KEY` to your key. A Semantic Scholar API key is optional; unauthenticated requests can be rate-limited. Crossref and arXiv are enabled by default as alternate search sources. You may add `CROSSREF_EMAIL` in `.env` to identify requests to Crossref. Then start the application:
+Open `.env` and set `GEMINI_API_KEY` to your key. A Semantic Scholar API key is optional; unauthenticated requests can be rate-limited. Crossref and arXiv are enabled by default as alternate search sources. You may add `CROSSREF_EMAIL` in `.env` to identify requests to Crossref.
 
+### Run with React Frontend & FastAPI Backend (Recommended)
+
+1. Start the FastAPI backend:
 ```powershell
-streamlit run app.py
+uvicorn main:app --reload --port 8000
 ```
 
-The app opens at the local URL printed by Streamlit. The SQLite database and Chroma index are created under `data/` on first use.
+2. In a separate terminal, start the React development server:
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000` in your browser. (The Vite dev server automatically proxies `/api` calls to FastAPI at `http://localhost:8000`).
+
+Alternatively, build the React production bundle once (`cd frontend && npm run build`) and start `python main.py`—FastAPI will serve both the React app and all API routes directly at `http://localhost:8000`!
+
+### Deployment: Render & Vercel
+
+- **Render (Backend)**: Deploy as a Python Web Service.
+  - Build Command: `pip install --upgrade pip && pip install -r requirements.txt`
+  - Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+  - Environment Variables: `GEMINI_API_KEY`, `PYTHON_VERSION=3.10.13`
+- **Vercel (Frontend)**: Deploy the `frontend/` directory to Vercel.
+  - Framework Preset: `Vite`
+  - Output Directory: `dist`
+  - Environment Variable: `VITE_API_BASE_URL` set to your Render backend URL (e.g. `https://your-service.onrender.com`).
 
 ## Suggested demo
 
