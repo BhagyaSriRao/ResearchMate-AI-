@@ -2,10 +2,11 @@
 # Environment Variables & API Keys (CRITICAL: Do NOT commit secrets to GitHub)
 # ==============================================================================
 .env
+.env.*
+*.env
+.env.example
 .env.local
 .env.*.local
-*.env
-!.env.example
 
 # ==============================================================================
 # Python Virtual Environments
