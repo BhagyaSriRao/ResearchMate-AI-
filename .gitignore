@@ -1,0 +1,90 @@
+# ==============================================================================
+# Environment Variables & API Keys (CRITICAL: Do NOT commit secrets to GitHub)
+# ==============================================================================
+.env
+.env.local
+.env.*.local
+*.env
+!.env.example
+
+# ==============================================================================
+# Python Virtual Environments
+# ==============================================================================
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# ==============================================================================
+# Python Bytecode & Cache
+# ==============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ==============================================================================
+# Databases & Local Research Data (Keep folder structure, ignore contents)
+# ==============================================================================
+data/*
+!data/.gitkeep
+*.db
+*.sqlite
+*.sqlite3
+chroma/
+chroma_db/
+*.chroma
+
+# ==============================================================================
+# Streamlit Cache & Secrets
+# ==============================================================================
+.streamlit/secrets.toml
+
+# ==============================================================================
+# Generated Reports & Export Documents
+# ==============================================================================
+researchmate_report.docx
+researchmate_report.pdf
+*.docx
+*.pdf
+
+# ==============================================================================
+# Testing, Coverage & Linters
+# ==============================================================================
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# ==============================================================================
+# IDEs & Operating System Artifacts
+# ==============================================================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
